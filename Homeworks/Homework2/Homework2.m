@@ -106,8 +106,62 @@ for k = 1:1
     
     %% Part 5, utilitzacio d'altres metodes
 
-    % P-Tile thresholding
+    % Mètode 1: dividir la imatge en 9 subimatges i agafar com a
+    % thresholds: 0.3 de la avg pel background i 0.7 avg per carn
+    % Es un local thresholding de mida fixa
+    
+    m11 = im1(1:(x/3), 1:(y/3));    
+    m12 = im1(1:(x/3), (y/3):(2*y/3));
+    m13 = im1(1:(x/3), (2*y/3):y);
+    
+    m21 = im1((x/3):(2*x/3), 1:(y/3));
+    m22 = im1((x/3):(2*x/3), (y/3):(2*y/3));
+    m23 = im1((x/3):(2*x/3), (2*y/3):y);
+    
+    m31 = im1((2*x/3):x, 1:(y/3));
+    m32 = im1((2*x/3):x, (y/3):(2*y/3));
+    m33 = im1((2*x/3):x, (2*y/3):y);
+    
+    bg11 = imbinarize(m11, mean(m11, 'all')*0.003);
+    g11 = imbinarize(m11, mean(m11, 'all')*0.007);
+    bg12 = imbinarize(m12, mean(m12, 'all')*0.003);
+    g12 = imbinarize(m12, mean(m12, 'all')*0.007);
+    bg13 = imbinarize(m13, mean(m13, 'all')*0.003);
+    g13 = imbinarize(m13, mean(m13, 'all')*0.007);
+    
+    bg21 = imbinarize(m21, mean(m21, 'all')*0.003);
+    g21 = imbinarize(m21, mean(m21, 'all')*0.007);
+    bg22 = imbinarize(m22, mean(m22, 'all')*0.003);
+    g22 = imbinarize(m22, mean(m22, 'all')*0.007);
+    bg23 = imbinarize(m23, mean(m23, 'all')*0.003);
+    g23 = imbinarize(m23, mean(m23, 'all')*0.007);
+    
+    bg31 = imbinarize(m31, mean(m31, 'all')*0.003);
+    g31 = imbinarize(m31, mean(m31, 'all')*0.007);
+    bg32 = imbinarize(m32, mean(m32, 'all')*0.003);
+    g32 = imbinarize(m32, mean(m32, 'all')*0.007);
+    bg33 = imbinarize(m33, mean(m33, 'all')*0.003);
+    g33 = imbinarize(m33, mean(m33, 'all')*0.007);
+    
+    bgMask4 = [bg11 bg12 bg13; bg21 bg22 bg23; bg31 bg32 bg33];
+    greixMask4 = [g11 g12 g13; g21 g22 g23; g31 g32 g33];
+    
+    for i = 1:x
+        for j = 1:y
+            if bgMask4(i, j) == 1
+                carn = carn + 1;
+                if greixMask4(i, j) == 1
+                    greix = greix + 1;
+                end
+            end
+        end
+    end
 
+    percentatgeGreix = greix / carn * 100
+    res = ["Binaritzat metode 1" s percentatgeGreix];
+    resultats = [resultats; res];
+    
+    
     % Mètode 2
     
     
@@ -118,20 +172,18 @@ for k = 1:1
     figure, subplot(2, 5, 1), imshow(bgMask), title('hardcoded');
     subplot(2, 5, 2), imshow(bgMask2), title('hist');
     subplot(2, 5, 3), imshow(bgMask3), title('auto');
-    % 4 per metode nostre 1
+    subplot(2, 5, 4), imshow(bgMask4), title('metode 1');
     % 5 per metode nostre 2
     subplot(2, 5, 6), imshow(greixMask);
     subplot(2, 5, 7), imshow(greixMask2);
     subplot(2, 5, 8), imshow(greixMask3);
-    % 9 per metode nostre 1 greix
+    subplot(2, 5, 9), imshow(greixMask4);
     % 10 per metode nostre 2 greix
     
 end
 
-resultats
+resultats % mostra la taula de resultats
 
-%im1 = imread('F1011flb.bmp'); % Llegim la imatge
-%im1 = imcrop(im1); % Retallem la imatge manualment
 
 
 

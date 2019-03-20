@@ -104,29 +104,61 @@ for k = 1:1
     res = ["Binaritzat ll.automàtic" s percentatgeGreix];
     resultats = [resultats; res];
     
+    %% Part 5, utilitzacio d'altres metodes
+
+    % Mètode 1: dividir la imatge en 9 subimatges i agafar com a
+    % thresholds: 0.3 de la avg pel background i 0.7 avg per carn
+    m11 = im1(1:(x/3), 1:(y/3));    
+    m12 = im1(1:(x/3), (y/3):(2*y/3));
+    m13 = im1(1:(x/3), (2*y/3):y);
+    
+    m21 = im1((x/3):(2*x/3), 1:(y/3));
+    m22 = im1((x/3):(2*x/3), (y/3):(2*y/3));
+    m23 = im1((x/3):(2*x/3), (2*y/3):y);
+    
+    m31 = im1((2*x/3):x, 1:(y/3));
+    m32 = im1((2*x/3):x, (y/3):(2*y/3));
+    m33 = im1((2*x/3):x, (2*y/3):y);
+    
+    bg11 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g11 = imbinarize(m11, mean(m11, 'all')*0.7);
+    bg12 = imbinarize(m12, mean(m11, 'all')*0.3);
+    g12 = imbinarize(m12, mean(m11, 'all')*0.7);
+    bg13 = imbinarize(m13, mean(m11, 'all')*0.3);
+    g13 = imbinarize(m1, mean(m11, 'all')*0.7);
+    bg21 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g22 = imbinarize(m11, mean(m11, 'all')*0.7);
+    bg23 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g23 = imbinarize(m11, mean(m11, 'all')*0.7);
+    bg31 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g31 = imbinarize(m11, mean(m11, 'all')*0.7);
+    bg32 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g32 = imbinarize(m11, mean(m11, 'all')*0.7);
+    bg33 = imbinarize(m11, mean(m11, 'all')*0.3);
+    g33 = imbinarize(m11, mean(m11, 'all')*0.7);
+    
+    % Mètode 2
     
     
-    figure, subplot(2, 5, 1), imshow(bgMask), title('ll.preprogramat');
-    subplot(2, 5, 2), imshow(bgMask2), title('ll.histograma');
-    subplot(2, 5, 3), imshow(bgMask3), title('ll.automatic');
+    
+    %% Resultats
+    
+    figure, imshow(im1), title('imatge original');
+    figure, subplot(2, 5, 1), imshow(bgMask), title('hardcoded');
+    subplot(2, 5, 2), imshow(bgMask2), title('hist');
+    subplot(2, 5, 3), imshow(bgMask3), title('auto');
     % 4 per metode nostre 1
     % 5 per metode nostre 2
     subplot(2, 5, 6), imshow(greixMask);
-    figure, subplot(2, 5, 7), imshow(greixMask2);
-    figure, subplot(2, 5, 8), imshow(greixMask3);
+    subplot(2, 5, 7), imshow(greixMask2);
+    subplot(2, 5, 8), imshow(greixMask3);
     % 9 per metode nostre 1 greix
     % 10 per metode nostre 2 greix
     
 end
 
-resultats
-
-%im1 = imread('F1011flb.bmp'); % Llegim la imatge
-%im1 = imcrop(im1); % Retallem la imatge manualment
+resultats % mostra la taula de resultats
 
 
-%% Part 5, utilitzacio d'altres metodes
 
-% P-Tile thresholding
 
-% 
