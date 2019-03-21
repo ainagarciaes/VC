@@ -1,7 +1,9 @@
-imatges = ['F1011flb.bmp'; 'F1019flb.bmp'; 'F1031flb.bmp'; 'F1051flb.bmp'; 'F1053flb.bmp'; 'F1059flb.bmp';'F1064flb.bmp';'F1079flb.bmp';'F1083flb.bmp'; 'F1096flb.bmp';'F1097flb.bmp';'F1101flb.bmp';'F1102flb.bmp';'F1103flb.bmp'];
-resultats = ["MÃ¨tode" "Imatge" "Percentatge de Greix"];
+%%HOMEWORK 2 - MARTÍ RAMON, AINA GARCIA 
 
-for k = 1:1
+imatges = ['F1011flb.bmp'; 'F1019flb.bmp'; 'F1031flb.bmp'; 'F1051flb.bmp'; 'F1053flb.bmp'; 'F1059flb.bmp';'F1064flb.bmp';'F1079flb.bmp';'F1083flb.bmp'; 'F1096flb.bmp';'F1097flb.bmp';'F1101flb.bmp';'F1102flb.bmp';'F1103flb.bmp'];
+resultats = ["Mètode" "Imatge" "Percentatge de Greix"];
+
+for k = 1:14
     %% Part 1, llegir i retallar les imatges
     s = imatges(k, :);
     im1 = imread(s);
@@ -19,10 +21,6 @@ for k = 1:1
     bgMask = imbinarize(im1, 0.3);
     greixMask = imbinarize(im1, 0.7);
 
-    % POSAR AL FINAL AMB SUBPLOTS
-    %figure, imshow(bgMask);
-    %figure, imshow(greixMask);
-
     [x, y] = size(im1);
 
     %Calcular el percentatge de greix
@@ -37,7 +35,7 @@ for k = 1:1
         end
     end
 
-    percentatgeGreix = greix / carn * 100
+    percentatgeGreix = greix / carn * 100;
     res = ["Binaritzat ll.preprogramat" s percentatgeGreix];
     resultats = [resultats; res];
     
@@ -47,10 +45,6 @@ for k = 1:1
 
     bgMask2 = imbinarize(im1, t1(1)/255);
     greixMask2 = imbinarize(im1, t1(2)/255);
-
-    % POSAR AL FINAL AMB SUBPLOTS
-    %figure, imshow(bgMask2);
-    %figure, imshow(greixMask2);
 
     [x, y] = size(im1);
 
@@ -66,12 +60,12 @@ for k = 1:1
         end
     end
 
-    percentatgeGreix = greix / carn * 100
+    percentatgeGreix = greix / carn * 100;
     res = ["Binaritzat ll.histograma" s percentatgeGreix];
     resultats = [resultats; res];
     
     %% Part 4, trobar llindars de forma automatica
-    level = graythresh(im1)
+    level = graythresh(im1);
     bgMask3 = imbinarize(im1, level);
     bgMask3 = cast(bgMask3, 'like', im1);
     imNoBG = im1.*bgMask3; % fons completament negre (0)
@@ -100,13 +94,13 @@ for k = 1:1
         end
     end
 
-    percentatgeGreix = (x*y - carn - fons) * 100/carn 
-    res = ["Binaritzat ll.automÃ tic" s percentatgeGreix];
+    percentatgeGreix = (x*y - carn - fons) * 100/carn; 
+    res = ["Binaritzat ll.automàtic" s percentatgeGreix];
     resultats = [resultats; res];
     
     %% Part 5, utilitzacio d'altres metodes
 
-    % MÃ¨tode 1: dividir la imatge en 9 subimatges i agafar com a
+    % Mètode 1: dividir la imatge en 9 subimatges i agafar com a
     % thresholds: 0.3 de la avg pel background i 0.7 avg per carn
     % Es un local thresholding de mida fixa
     
@@ -157,33 +151,66 @@ for k = 1:1
         end
     end
 
-    percentatgeGreix = greix / carn * 100
+    percentatgeGreix = greix / carn * 100;
     res = ["Binaritzat metode 1" s percentatgeGreix];
     resultats = [resultats; res];
     
     
-    % MÃ¨tode 2
+    % Mètode 2
+    % Binarització d’una imatge amb un llindar ? calculat com 
+    % ?·(Imax - Imin) + Imin, on Imax i Imin són els valor màxim i mínim 
+    % de nivell de gris en les imatges i alfa un valor entre 0 i 1.
     
+    lmax = max(max(im1));
+    lmin = min(min(im1));
+    lambdaBG = 0.4*(lmax-lmin) + lmin;
+    bgMask5 = im1 > lambdaBG;
+    lambda = 0.75*(lmax-lmin) + lmin;
+    greixmask5 = im1 > lambda;
+    
+    carn = 0;
+    greix = 0;
+     for i = 1:x
+        for j = 1:y
+            if bgMask5(i, j) == 1
+                carn = carn + 1;
+                if greixmask5(i,j) == 1
+                    greix = greix + 1;
+                end
+            end
+        end
+     end   
+    
+    percentatgeGreix = greix / carn * 100;
+    res = ["Binaritzat metode 2" s percentatgeGreix];
+    resultats = [resultats; res];
     
     
     %% Resultats
     
     figure, imshow(im1), title('imatge original');
-    figure, subplot(2, 5, 1), imshow(bgMask), title('hardcoded');
+    figure('Position', [90 90 1200 600]), subplot(2, 5, 1), imshow(bgMask), title('hardcoded');
     subplot(2, 5, 2), imshow(bgMask2), title('hist');
-    subplot(2, 5, 3), imshow(bgMask3), title('auto');
+    subplot(2, 5, 3), imshow(imNoBG), title('auto');
     subplot(2, 5, 4), imshow(bgMask4), title('metode 1');
-    % 5 per metode nostre 2
+    subplot(2, 5, 5), imshow(bgMask5), title('metode 2');
+
     subplot(2, 5, 6), imshow(greixMask);
     subplot(2, 5, 7), imshow(greixMask2);
     subplot(2, 5, 8), imshow(greixMask3);
     subplot(2, 5, 9), imshow(greixMask4);
-    % 10 per metode nostre 2 greix
+    subplot(2, 5, 10), imshow(greixmask5);
+  
+        
+    disp('Press a key to delete all the results of the actual image and continue with the next image')  % Al fer click esborrem tots els plots generats en aquesta iteració i comencem una nova iteracio
+    pause;
+    
+    close all
     
 end
 
 resultats % mostra la taula de resultats
-
+xlswrite('resultats.xlsx',resultats) % guarda els resultats en un arxiu excel
 
 
 
