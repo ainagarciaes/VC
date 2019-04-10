@@ -1,0 +1,5 @@
+Classification of Flower Images using Clustering Algorithms:
+https://pdfs.semanticscholar.org/f138/3b45f3bde34be43f3f78263e9ad347e7f633.pdf
+
+Recognition between a Large Number of FlowerSpecies:
+https://www.robots.ox.ac.uk/~vgg/research/flowers_demo/docs/Chai11.pdf
