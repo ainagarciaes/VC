@@ -5,6 +5,14 @@ function struct_caracteristiques = extreu_caracteristiques(imatge, imatge_seg) %
 function np = num_petals(seg_img)
  
 function [r, g, b] = color_petals(imatge, imatge_seg) % poso la segmentada per poder fer una mask nomes amb la part de les flors
+    R = imatge(:,:,1);
+    G = imatge(:,:,2);
+    B = imatge(:,:,3);
+    imfons = imatge_seg ~= 1;
+    r = uint8(mean(R(~imfons)));
+    g = uint8(mean(G(~imfons)));
+    b = uint8(mean(B(~imfons)));
+end
 
 function angle_orientacio = orientacio_imatge(imatge, imatge_seg) % no se si necessitem les dos, borrar el que calgui)
 
