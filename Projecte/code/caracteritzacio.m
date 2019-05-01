@@ -87,3 +87,31 @@ function area = area_flor(imatge, imatge_seg)
     BW = imcomplement(imfons);
     area = bwarea(BW);
 end
+
+function rb = normalitzaRGB(imatge)
+    aux(:,:) =imatge(:,:,1) + imatge(:,:,2) + imatge(:,:,3);
+    [x, y, z] = size(imatge);
+    rb(:,:,1) = uint8(255*imatge(:,:,1)./aux);
+    rb(:,:,2) = uint8(255*imatge(:,:,3)./aux);
+end
+
+function hist = histograma_RGB(imatge, precisio)
+    rb = normalitzaRGB(imatge);
+    hist = zeros(precisio, precisio);
+    [x, y, z] = size(rb);
+    scale = 255/precisio;
+    for m = 1:x
+        for n = 1:y
+            r = ceil(rb(m,n,1)/scale);
+            b = ceil(rb(m.n,2)/scale);
+            if r == 0
+                r == 1;
+            end
+            if b == 0
+                b == 1;
+            end
+            hist(r,b) = hist(r,b) + 1
+        end
+    end
+    hist = hist./(x*y);
+end
