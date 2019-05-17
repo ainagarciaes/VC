@@ -1,19 +1,9 @@
-function struct_caracteristiques = extreu_caracteristiques(imatge, imatge_seg) % crida a totes les funcions de caracteristiques i guarda els resultats en un struct que sera una fila de la nostra taula de dades usades per pendre posteriorment les decisions. El struct aquest s'haurà de definir pero seran basicament els camps necessaris de cada característica
+function struct_caracteristiques = Extreu_caracteristiques(imatge, imatge_seg) % crida a totes les funcions de caracteristiques i guarda els resultats en un struct que sera una fila de la nostra taula de dades usades per pendre posteriorment les decisions. El struct aquest s'haurà de definir pero seran basicament els camps necessaris de cada característica
 end
 %-----------------------------------------------------------------------------%
 
 function np = num_petals(seg_img)
     np = 0;
-end
- 
-function [r, g, b] = color_petals(imatge, imatge_seg) % poso la segmentada per poder fer una mask nomes amb la part de les flors
-    R = imatge(:,:,1);
-    G = imatge(:,:,2);
-    B = imatge(:,:,3);
-    imfons = imatge_seg ~= 1;
-    r = uint8(mean(R(~imfons)));
-    g = uint8(mean(G(~imfons)));
-    b = uint8(mean(B(~imfons)));
 end
 
 function angle_orientacio = orientacio_imatge(imatge, imatge_seg) % no se si necessitem les dos, borrar el que calgui)
@@ -88,21 +78,22 @@ function area = area_flor(imatge, imatge_seg)
     area = bwarea(BW);
 end
 
-function normalitzaRGB(imatge)
+function rb = normalitzaRGB(imatge)
     aux(:,:) =imatge(:,:,1) + imatge(:,:,2) + imatge(:,:,3);
     [x, y, z] = size(imatge);
-    
+    rb(:,:,1) = uint8(255*imatge(:,:,1)./aux);
+    rb(:,:,2) = uint8(255*imatge(:,:,3)./aux);
 end
 
 function hist = histograma_RGB(imatge, precisio)
-    imatge = normalitzaRGB(imatge);
+    rb = normalitzaRGB(imatge);
     hist = zeros(precisio, precisio);
-    [x, y, z] = size(imatge);
+    [x, y, z] = size(rb);
     scale = 255/precisio;
     for m = 1:x
         for n = 1:y
-            r = ceil(imatge(m,n,1)/scale);
-            b = ceil(imatge(m.n,2)/scale);
+            r = ceil(rb(m,n,1)/scale);
+            b = ceil(rb(m.n,2)/scale);
             if r == 0
                 r == 1;
             end
