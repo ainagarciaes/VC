@@ -3,7 +3,13 @@ end
 %-----------------------------------------------------------------------------%
 
 function np = num_petals(seg_img)
-    np = 0;
+    bw = imbinarize(im); %imatge a B/W binary
+    ee = strel('disk',40); %TO DO: el tamany del disk ha de variar depenent del tipus de flor
+    close1 = imclose(bw, ee); %close de la imatge bw amb ee
+    petals = imsubtract(bw, close1); %restem l'imatge orig bw amb la close per veure les puntes dels petals
+    arreglada = bwareaopen(petals, 100); %eliminem les areas < 100 pixels (soroll)
+    [etiq, numdiffs] = bwlabel(arreglada); %obtenim imatge etiquetada. numdiffs es el nombre de labels 
+    np = numdiffs; %resultat    
 end
 
 function angle_orientacio = orientacio_imatge(imatge, imatge_seg) % no se si necessitem les dos, borrar el que calgui)
