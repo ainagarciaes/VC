@@ -2,27 +2,32 @@
 
 imGranate = imread('granate.png');
 imatgeGranate = double(imGranate);
-histoGranate = Colors_flor(imatgeGranate); hold on;
+histoGranate = NormalitzaRGB(imatgeGranate); hold on;
+histoGranate = Histo2D(histoGranate);
 histoGranate = imgaussfilt(histoGranate, 2);
 
 imGroc = imread('groc.png');
 imatgeGroc = double(imGroc);
-histoGroc = Colors_flor(imatgeGroc); hold on;
+histoGroc = NormalitzaRGB(imatgeGroc); hold on;
+histoGroc = Histo2D(histoGroc);
 histoGroc = imgaussfilt(histoGroc, 2);
 
 imBlanc = imread('blanc.png');
 imatgeBlanc = double(imBlanc);
-histoBlanc = Colors_flor(imatgeBlanc); hold on;
+histoBlanc = NormalitzaRGB(imatgeBlanc); hold on;
+histoBlanc = Histo2D(histoBlanc);
 histoBlanc = imgaussfilt(histoBlanc, 2);
 
 imLila = imread('lila.png');
 imatgeLila = double(imLila);
-histoLila = Colors_flor(imatgeLila); hold on;
+histoLila = NormalitzaRGB(imatgeLila); hold on;
+histoLila = Histo2D(histoLila);
 histoLila = imgaussfilt(histoLila, 2);
 
 imTaronja = imread('taronja.png');
 imatgeTaronja = double(imTaronja);
-histoTaronja = Colors_flor(imatgeTaronja); hold on;
+histoTaronja = NormalitzaRGB(imatgeTaronja); hold on;
+histoTaronja = Histo2D(histoTaronja);
 histoTaronja = imgaussfilt(histoTaronja, 2);
 
 subplot(2,3,1)
