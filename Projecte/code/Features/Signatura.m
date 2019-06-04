@@ -1,10 +1,9 @@
-function topmosty = Signatura(binaryImage)
+function [topmosty, ratio, num_petals] = Signatura(binaryImage)
     % Find the centroid.
     labeledImage = bwlabel(binaryImage);
     props = regionprops(binaryImage, 'Centroid');
-    xCentroid = props.Centroid(1)
-    yCentroid = props.Centroid(2)
-    hold on;
+    xCentroid = props.Centroid(1);
+    yCentroid = props.Centroid(2);
 
     figure, imshow(labeledImage), title('imatge original');
     hold on;
@@ -12,8 +11,8 @@ function topmosty = Signatura(binaryImage)
     hold off;
     [rows, columns] = size(binaryImage);
     % Translate the image
-    xShift = columns/2 - xCentroid
-    yShift = rows/2 - yCentroid
+    xShift = columns/2 - xCentroid;
+    yShift = rows/2 - yCentroid;
     binaryImage = imtranslate(binaryImage, [xShift, yShift]);
 
     % bwboundaries() returns a cell array, where each cell contains the row/column coordinates for an object in the image.
@@ -44,6 +43,11 @@ function topmosty = Signatura(binaryImage)
         % Find the topmost Y value.
         topmosty(angle) = max(xyRotated(:, 2));
     end
-    figure, plot(topmosty), title('signature');
+    
     topmosty = topmosty(1:359);
+    figure, plot(topmosty, 'LineWidth', 2), title('signature');
+    
+    ratio = max(topmosty)/min(topmosty);
+    peaks = findpeaks(topmosty);
+    [x, num_petals] = size(peaks);
 end
