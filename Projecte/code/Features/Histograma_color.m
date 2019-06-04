@@ -17,7 +17,6 @@ function histo = Histograma_color(im, imseg)
     f = normpdf(-20:20,0,sigma); % <== f(x) gaussian distribution
     histo = conv(histo,f);
     histo = histo(1,1:360);
-
 end
 
 
