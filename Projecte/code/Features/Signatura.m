@@ -1,3 +1,5 @@
+% REF: https://es.mathworks.com/matlabcentral/answers/uploaded_files/61799/test.m
+% Codi adaptat, no es 100% igual
 function [topmosty, ratio, num_petals] = Signatura(binaryImage)
     % Find the centroid.
     labeledImage = bwlabel(binaryImage);
@@ -5,10 +7,10 @@ function [topmosty, ratio, num_petals] = Signatura(binaryImage)
     xCentroid = props.Centroid(1);
     yCentroid = props.Centroid(2);
 
-    figure, imshow(labeledImage), title('imatge original');
-    hold on;
-    plot(xCentroid, yCentroid, 'r+', 'MarkerSize', 30), title('centroids');
-    hold off;
+    %figure, imshow(labeledImage), title('imatge original');
+    %hold on;
+    %plot(xCentroid, yCentroid, 'r+', 'MarkerSize', 30), title('centroids');
+    %hold off;
     [rows, columns] = size(binaryImage);
     % Translate the image
     xShift = columns/2 - xCentroid;
@@ -18,8 +20,8 @@ function [topmosty, ratio, num_petals] = Signatura(binaryImage)
     % bwboundaries() returns a cell array, where each cell contains the row/column coordinates for an object in the image.
     % Plot the borders of all the coins on the original grayscale image using the coordinates returned by bwboundaries.
 
-    boundaries = bwboundaries(binaryImage);
-    numberOfBoundaries = size(boundaries, 1)
+    boundaries = bwboundaries(labeledImage);
+    numberOfBoundaries = size(boundaries, 1);
     for k = 1 : numberOfBoundaries
         thisBoundary = boundaries{k};
         %plot(thisBoundary(:,2), thisBoundary(:,1), 'r', 'LineWidth', 2), title('boundary');
@@ -29,10 +31,10 @@ function [topmosty, ratio, num_petals] = Signatura(binaryImage)
     % Subtract centroid so that they go from -x to +x
     x = thisBoundary(:,2) - xCentroid;
     y = thisBoundary(:,1) - yCentroid;
-    figure, imshow(binaryImage), title('imatge original');
-    hold on;
-    plot(thisBoundary(:,2), thisBoundary(:,1), 'r', 'LineWidth', 2), title('boundary');
-    hold off;
+    %figure, imshow(binaryImage), title('imatge original');
+    %hold on;
+    %plot(thisBoundary(:,2), thisBoundary(:,1), 'r', 'LineWidth', 2), title('boundary');
+    %hold off;
     xy = [x, y]; % Make N by 2 array to be used for rotation.
 
     % https://en.wikipedia.org/wiki/Rotation_matrix
@@ -44,8 +46,9 @@ function [topmosty, ratio, num_petals] = Signatura(binaryImage)
         topmosty(angle) = max(xyRotated(:, 2));
     end
     
+    topmosty = sgolayfilt(topmosty,3,11);
     topmosty = topmosty(1:359);
-    figure, plot(topmosty, 'LineWidth', 2), title('signature');
+    %figure, plot(topmosty, 'LineWidth', 2), title('signature');
     
     ratio = max(topmosty)/min(topmosty);
     peaks = findpeaks(topmosty);

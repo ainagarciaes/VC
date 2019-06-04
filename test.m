@@ -1,15 +1,11 @@
-im = imread('image_0654.jpg');
-imseg = imread('image_0654.png');
+imseg = imread('image_0737.png');
 
-histo = Histograma_color(im, imseg);
+imbin = BinaritzacioUniforme(imseg);
 
-imbin = ~imbinarize(imseg);
-sig = Signatura(imbin);
+figure, imshow(imbin);
+[sig, ratio, np] = Signatura(imbin);
 
-labels = zeros(3, 1);
-labels = Decisor_histograma_color(histo, labels);
-decisio = min(labels);
-index = find(labels==decisio);
-
-labels = zeros(3, 1);
+figure, plot(sig), title('signatura');
+ratio
+np
 

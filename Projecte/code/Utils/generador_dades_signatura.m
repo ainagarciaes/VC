@@ -1,49 +1,205 @@
+% REF: com llegir d'una carpeta: https://matlab.fandom.com/wiki/FAQ#How_can_I_process_a_sequence_of_files.3F
 
+%% Vectors per la taula
+ratio = [];
+np = [];
+label = [];
 
-%% Boto d'or
-imseg1 = imread('image_1125.png');
-imseg2 = imread('image_1133.png');
+%% Boto d'ortheFiles = dir(filePattern); 
+% /home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/BotodOr
 
-[sig1, ratio1, np1] = Signatura(~imbinarize(imseg1));
-[sig2, ratio2, np2] = Signatura(~imbinarize(imseg2));
+%myFolder = uigetdir('/home', 'boto dor');
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/BotodOr'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "BotodOr"];
+end
 
 %% Buixol
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Buixol'
 
-
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Buixol"];
+end
 
 %% Crocus
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Crocus'
 
-%% Dent de lleo
-imseg5 = imread('image_0964.png');
-imseg6 = imread('image_0989.png');
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Crocus"];
+end
 
-[sig5, ratio5, np5] = Signatura(~imbinarize(imseg5));
-[sig6, ratio6, np6] = Signatura(~imbinarize(imseg6));
+%% DentdeLleo
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/DentdeLleo'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "DentdeLleo"];
+end
+
 %% Fadrins
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Fadrins'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Fadrins"];
+end
 
 %% Fritillaria
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Fritillaria'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Fritillaria"];
+end
 
 %% Gerbera
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Gerbera'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Gerbera"];
+end
 
 %% Girasol
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Girasol'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Girasol"];
+end
 
 %% Hemerocallis
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Hemerocallis'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Hemerocallis"];
+end
 
 %% Lliri
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Lliri'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Lliri"];
+end
 
 %% Narcis
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Narcis'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Narcis"];
+end
 
 %% Viola
-imseg3 = imread('image_1284.png');
-imseg4 = imread('image_1286.png');
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/Segmentades/Viola'
 
-[sig3, ratio3, np3] = Signatura(~imbinarize(imseg3));
-[sig4, ratio4, np4] = Signatura(~imbinarize(imseg4));
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+  baseFileName = theFiles(k).name;
+  fprintf(1, 'Now reading %s\n', baseFileName);
+  imageArray = imread(baseFileName);
+  imBin = BinaritzacioUniforme(imageArray);
+  [sig, r, npc] = Signatura(imBin);
+  ratio = [ratio; r];
+  np = [np; npc];
+  label = [label; "Viola"];
+end
 
 %% Guardar-ho tot en una table
-ratios = [ratio1; ratio2; ratio3; ratio4; ratio5; ratio6];
-np = [np1; np2; np3; np4; np5; np6];
-labels = [1; 1; 2; 2; 3; 3];
-
-ratiosTable = table(labels, ratios, np);
-writetable(ratiosTable,'ratioscolor');
+sigTable = table(ratio, np, label);
+writetable(sigTable,'sigTable');
