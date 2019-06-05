@@ -1,74 +1,340 @@
-%% Minicodi per veure les diferents posicions de cada color
+%% Test for a single image
+imSeg = imread('image_1122.png');
+im = imread('image_1122.jpg');
 
-imGranate = imread('granate.png');
-imatgeGranate = double(imGranate);
-histoGranate = NormalitzaRGB(imatgeGranate); hold on;
-histoGranate = Histo2D(histoGranate);
-histoGranate = imgaussfilt(histoGranate, 2);
+[ratio, np, angle] = Extreu_caracteristiques(im, imSeg);
 
-imGroc = imread('groc.png');
-imatgeGroc = double(imGroc);
-histoGroc = NormalitzaRGB(imatgeGroc); hold on;
-histoGroc = Histo2D(histoGroc);
-histoGroc = imgaussfilt(histoGroc, 2);
+t = table(ratio, np, angle);
+p = baggedTrees.predictFcn(t)
 
-imBlanc = imread('blanc.png');
-imatgeBlanc = double(imBlanc);
-histoBlanc = NormalitzaRGB(imatgeBlanc); hold on;
-histoBlanc = Histo2D(histoBlanc);
-histoBlanc = imgaussfilt(histoBlanc, 2);
+%% Test for a set of data
 
-imLila = imread('lila.png');
-imatgeLila = double(imLila);
-histoLila = NormalitzaRGB(imatgeLila); hold on;
-histoLila = Histo2D(histoLila);
-histoLila = imgaussfilt(histoLila, 2);
+% REF: com llegir d'una carpeta: https://matlab.fandom.com/wiki/FAQ#How_can_I_process_a_sequence_of_files.3F
 
-imTaronja = imread('taronja.png');
-imatgeTaronja = double(imTaronja);
-histoTaronja = NormalitzaRGB(imatgeTaronja); hold on;
-histoTaronja = Histo2D(histoTaronja);
-histoTaronja = imgaussfilt(histoTaronja, 2);
+%% Vectors per la taula
+ratio = [];
+np = [];
+label = [];
+angle = [];
 
-subplot(2,3,1)
-surf(histoGranate), title('surf del color Granate');
-grid on
-xlabel('x')
-ylabel('y')
-zlabel('z')
-view(0,90)
+%% Boto d'ortheFiles = dir(filePattern); 
+% /home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/BotodOr
 
-subplot(2,3,2)
-surf(histoTaronja), title('surf del color Taronja');
-grid on
-xlabel('x')
-ylabel('y')
-zlabel('z')
-view(0,90)
+%myFolder = uigetdir('/home', 'boto dor');
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/BotodOr'
 
-subplot(2,3,3)
-surf(histoGroc), title('surf del color Groc');
-grid on
-xlabel('x')
-ylabel('y')
-zlabel('z')
-view(0,90)
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "BotodOr"];
+end
 
-subplot(2,3,4)
-surf(histoBlanc), title('surf del color Blanc');
-grid on
-xlabel('x')
-ylabel('y')
-zlabel('z')
-view(0,90)
+%% Buixol
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Buixol'
 
-subplot(2,3,5)
-surf(histoLila), title('surf del color Lila');
-grid on
-xlabel('x')
-ylabel('y')
-zlabel('z')
-view(0,90)
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Buixol"];
+end
 
+%% Crocus
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Crocus'
 
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Crocus"];
+end
 
+%% DentdeLleo
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/DentdeLleo'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "DentdeLleo"];
+end
+
+%% Fadrins
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Fadrins'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Fadrins"];
+end
+
+%% Fritillaria
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Fritillaria'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Fritillaria"];
+end
+
+%% Gerbera
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Gerbera'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Gerbera"];
+end
+
+%% Girasol
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Girasol'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Girasol"];
+end
+
+%% Hemerocallis
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Hemerocallis'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Hemerocallis"];
+end
+
+%% Lliri
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Lliri'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Lliri"];
+end
+
+%% Narcis
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Narcis'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Narcis"];
+end
+
+%% Viola
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Viola'
+
+filePattern = fullfile(myFolder, '*.png');
+theFiles = dir(filePattern);
+for k = 1 : length(theFiles)
+    % preparar paths
+    segName = theFiles(k).name;
+    imName = strrep(segName, 'png','jpg');
+    % llegir imatges
+    imSeg = imread(segName);
+    im = imread(imName);
+    % preprocessat
+    imBin = BinaritzacioUniforme(imSeg);
+    % caracteristiques
+    histo = Histograma_color(im, imSeg);
+    a = max(histo);
+    a = find(histo==a);
+    [sig, r, npc] = Signatura(imBin);
+    
+    angle = [angle; a];
+    ratio = [ratio; r];
+    np = [np; npc];
+    label = [label; "Viola"];
+end
+
+%% Guardar-ho tot en una table
+sigTable = table(ratio, np, label, angle);
+t = table(ratio, np, angle);
+p = baggedTrees.predictFcn(t)
+
+res = [label, string(p)]
