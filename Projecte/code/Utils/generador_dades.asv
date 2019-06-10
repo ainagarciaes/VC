@@ -14,7 +14,7 @@ compacitat = [];
 
 %myFolder = uigetdir('/home', 'boto dor');
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -45,7 +45,7 @@ end
 
 %% Buixol
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Buixol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Buixol'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -76,7 +76,7 @@ end
 
 %% Crocus
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Crocus'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Crocus'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -107,7 +107,7 @@ end
 
 %% DentdeLleo
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/DentdeLleo'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/DentdeLleo'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -138,7 +138,7 @@ end
 
 %% Fadrins
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fadrins'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fadrins'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -169,7 +169,7 @@ end
 
 %% Fritillaria
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fritillaria'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fritillaria'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -200,7 +200,7 @@ end
 
 %% Gerbera
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Gerbera'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Gerbera'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -231,7 +231,7 @@ end
 
 %% Girasol
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Girasol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Girasol'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -262,7 +262,7 @@ end
 
 %% Hemerocallis
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Hemerocallis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Hemerocallis'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -293,7 +293,7 @@ end
 
 %% Lliri
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Lliri'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Lliri'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -324,7 +324,7 @@ end
 
 %% Narcis
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Narcis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Narcis'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -355,7 +355,7 @@ end
 
 %% Viola
 %myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Viola'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Viola'
+myFolder = '/d/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);

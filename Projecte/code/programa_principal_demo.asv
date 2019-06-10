@@ -25,20 +25,18 @@ for k = 1 : length(theFiles)
     a = max(histo);
     a = find(histo==a);
     [sig, r, npc] = Signatura(imBin);
-    [exc, elo, com] = PropsGeo(imBin);
-
+    [exc, elo, com] = 
+    % marti (en el main.m igual per cada bucle)
     
     angle = [angle; a];
     ratio = [ratio; r];
     np = [np; npc];
-    excentricitat = [excentricitat; exc];
-    elongacio = [elongacio; elo];
-    compacitat = [compacitat; com];
+    % marti
 
 end
 
-sigTable = table(ratio, np, angle, excentricitat, elongacio, compacitat);
-t = table(ratio, np, angle, excentricitat, elongacio, compacitat);
+sigTable = table(ratio, np, angle);
+t = table(ratio, np, angle);
 
 load('pathTrainedModel', 'trainedModel');
 

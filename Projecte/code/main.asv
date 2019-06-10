@@ -1,3 +1,6 @@
+
+%% Test for a set of data
+
 % REF: com llegir d'una carpeta: https://matlab.fandom.com/wiki/FAQ#How_can_I_process_a_sequence_of_files.3F
 
 %% Vectors per la taula
@@ -10,11 +13,11 @@ elongacio = [];
 compacitat = [];
 
 %% Boto d'ortheFiles = dir(filePattern); 
-% /home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr
+% /home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/BotodOr
 
 %myFolder = uigetdir('/home', 'boto dor');
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/BotodOr'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -44,8 +47,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Buixol
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Buixol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Buixol'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Buixol'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Buixol'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -75,8 +78,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Crocus
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Crocus'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Crocus'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Crocus'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Crocus'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -106,8 +109,8 @@ for k = 1 : length(theFiles)
 end
 
 %% DentdeLleo
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/DentdeLleo'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/DentdeLleo'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/DentdeLleo'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/DentdeLleo'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -137,8 +140,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Fadrins
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fadrins'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fadrins'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Fadrins'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Fadrins'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -168,8 +171,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Fritillaria
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fritillaria'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fritillaria'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Fritillaria'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Fritillaria'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -199,8 +202,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Gerbera
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Gerbera'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Gerbera'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Gerbera'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Gerbera'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -230,8 +233,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Girasol
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Girasol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Girasol'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Girasol'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Girasol'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -261,8 +264,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Hemerocallis
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Hemerocallis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Hemerocallis'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Hemerocallis'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Hemerocallis'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -292,8 +295,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Lliri
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Lliri'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Lliri'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Lliri'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Lliri'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -311,7 +314,7 @@ for k = 1 : length(theFiles)
     a = max(histo);
     a = find(histo==a);
     [sig, r, npc] = Signatura(imBin);
-    [exc, elo, com] = PropsGeo(imBin);
+    [exc, elo, com] = PropsGeo(imBin)
     
     angle = [angle; a];
     ratio = [ratio; r];
@@ -323,8 +326,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Narcis
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Narcis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Narcis'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Narcis'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Narcis'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -342,7 +345,7 @@ for k = 1 : length(theFiles)
     a = max(histo);
     a = find(histo==a);
     [sig, r, npc] = Signatura(imBin);
-    [exc, elo, com] = PropsGeo(imBin);
+    [exc, elo, com] = PropsGeo(imBin)
     
     angle = [angle; a];
     ratio = [ratio; r];
@@ -354,8 +357,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Viola
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Viola'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Viola'
+%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/test/Viola'
+myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/test/Viola'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -366,14 +369,14 @@ for k = 1 : length(theFiles)
     % llegir imatges
     imSeg = imread(segName);
     im = imread(imName);
-    % preprocessatsave(filename,variables) guarda solo save(filename,variables) guarda solo las variables o los campos de un array de estructura especificados por variables.las variables o los campos de un array de estructura especificados por variables.
+    % preprocessat
     imBin = BinaritzacioUniforme(imSeg);
     % caracteristiques
     histo = Histograma_color(im, imSeg);
     a = max(histo);
     a = find(histo==a);
     [sig, r, npc] = Signatura(imBin);
-    [exc, elo, com] = PropsGeo(imBin);
+    [exc, elo, com] = PropsGeo(imBin)
     
     angle = [angle; a];
     ratio = [ratio; r];
@@ -386,5 +389,9 @@ end
 
 %% Guardar-ho tot en una table
 sigTable = table(ratio, np, label, angle, excentricitat, elongacio, compacitat);
-writetable(sigTable,'sigTable');
+t = table(ratio, np, angle, excentricitat, elongacio, compacitat);
 
+load('pathTrainedModel', 'trainedModel');
+p = trainedModel.predictFcn(t)
+
+res = [label, string(p)]
