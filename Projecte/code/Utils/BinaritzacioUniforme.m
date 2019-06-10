@@ -22,6 +22,7 @@
 function imBin = BinaritzacioUniforme(imSeg)
     imBin = (imSeg == 1); % en teoria binaritza sempre be
     imBin = imfill(imBin,'holes'); % trec els forats que hi ha dins de la flor
+    imBin = bwareaopen(imBin, round(0.001*numel(imBin))); %trec les regions que tinguin tamany molt petit
     imBin = bwareafilt(imBin, 1); % deixa nomes la part blanca mes gran, treu blops erronis de fons
     % TODO: separar dues flors quan sigui necessari, mirar com fer-ho
     % TODO: mirar com tancar la imatge quan hi hagi abelles i coses aixi
