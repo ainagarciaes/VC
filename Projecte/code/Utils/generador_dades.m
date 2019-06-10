@@ -307,7 +307,7 @@ for k = 1 : length(theFiles)
     % llegir imatges
     imSeg = imread(segName);
     im = imread(imName);
-    % preprocessat
+    % preprocessatsave(filename,variables) guarda solo save(filename,variables) guarda solo las variables o los campos de un array de estructura especificados por variables.las variables o los campos de un array de estructura especificados por variables.
     imBin = BinaritzacioUniforme(imSeg);
     % caracteristiques
     histo = Histograma_color(im, imSeg);
@@ -324,3 +324,4 @@ end
 %% Guardar-ho tot en una table
 sigTable = table(ratio, np, label, angle);
 writetable(sigTable,'sigTable');
+

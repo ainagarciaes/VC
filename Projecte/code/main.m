@@ -335,6 +335,8 @@ end
 %% Guardar-ho tot en una table
 sigTable = table(ratio, np, label, angle);
 t = table(ratio, np, angle);
-p = baggedTrees.predictFcn(t)
+
+load('pathTrainedModel', 'trainedModel');
+p = trainedModel.predictFcn(t)
 
 res = [label, string(p)]
