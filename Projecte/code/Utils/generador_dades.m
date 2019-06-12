@@ -13,8 +13,8 @@ compacitat = [];
 % /home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr
 
 %myFolder = uigetdir('/home', 'boto dor');
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/BotodOr'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/BotodOr'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -44,8 +44,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Buixol
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Buixol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Buixol'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Buixol'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Buixol'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -75,8 +75,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Crocus
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Crocus'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Crocus'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Crocus'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Crocus'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -106,8 +106,8 @@ for k = 1 : length(theFiles)
 end
 
 %% DentdeLleo
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/DentdeLleo'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/DentdeLleo'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/DentdeLleo'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/DentdeLleo'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -137,8 +137,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Fadrins
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fadrins'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fadrins'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fadrins'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fadrins'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -168,8 +168,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Fritillaria
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fritillaria'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fritillaria'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Fritillaria'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Fritillaria'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -199,8 +199,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Gerbera
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Gerbera'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Gerbera'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Gerbera'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Gerbera'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -230,8 +230,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Girasol
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Girasol'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Girasol'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Girasol'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Girasol'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -261,8 +261,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Hemerocallis
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Hemerocallis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Hemerocallis'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Hemerocallis'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Hemerocallis'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -292,8 +292,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Lliri
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Lliri'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Lliri'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Lliri'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Lliri'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -323,8 +323,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Narcis
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Narcis'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Narcis'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Narcis'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Narcis'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);
@@ -354,8 +354,8 @@ for k = 1 : length(theFiles)
 end
 
 %% Viola
-%myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Viola'
-myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Viola'
+myFolder = '/home/auri/Documents/UNI/VC/Projecte/imatges_flors/model/Viola'
+%myFolder = '/Users/Desktop/GitHub/VC/Projecte/imatges_flors/model/Viola'
 
 filePattern = fullfile(myFolder, '*.png');
 theFiles = dir(filePattern);

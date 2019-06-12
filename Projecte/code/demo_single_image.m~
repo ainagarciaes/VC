@@ -1,3 +1,5 @@
+im = uigetfile();
+
 myFolder = uigetdir('/home');
 
 %% Vectors per la taula
@@ -8,12 +10,9 @@ excentricitat = [];
 elongacio = [];
 compacitat = [];
 
-%% Llegir i tractar imatges
-filePattern = fullfile(myFolder, '*.png');
-theFiles = dir(filePattern);
-for k = 1 : length(theFiles)
+
     % preparar paths
-    segName = theFiles(k).name;
+    segName = strrep(segName, 'png','jpg');
     imName = strrep(segName, 'png','jpg');
     % llegir imatges
     imSeg = imread(segName);
@@ -42,18 +41,6 @@ t = table(ratio, np, angle, excentricitat, elongacio, compacitat);
 
 load('pathTrainedModel', 'trainedModel');
 
-p = trainedModel.ClassificationEnsemble;
-[labels, score] = predict(p,t);
+p = trainedModel.predictFcn(t);
 
-for i=1:size(labels)
-    major = 0;
-    for j=1:12
-        if (score(i,j) > 0.2)
-            major = 1;
-        end
-    end
-    if (major == 0)
-        labels(i) = {'Null'};
-    end
-end
-res = [string(labels)]
+res = [string(p)]
